@@ -1,5 +1,7 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CategoriasRepository } from './categorias.repository';
+import { CreateCategoriaDto } from './dtos/create-categoria.dto';
+import { UpdateCategoriaDto } from './dtos/update-categoria.dto';
 
 @Injectable()
 export class CategoriasService {
@@ -19,13 +21,13 @@ export class CategoriasService {
     return categoria;
   }
 
-  public createCategoria(data): String {
+  public createCategoria(data: CreateCategoriaDto): String {
     this.categoriasRepository.createCategoria(data);
 
     return 'Categoria criado com sucesso!!'
   }
 
-  public atualizarCategoria(id: number, data) {
+  public atualizarCategoria(id: number, data: UpdateCategoriaDto) {
     this.findOneCategoria(id);
 
     this.categoriasRepository.atualizarCategoria({ id, ...data });

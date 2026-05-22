@@ -6,10 +6,10 @@ export type CategoriaDocument = HydratedDocument<Categoria>;
 @Schema()
 export class Categoria{
   @Prop({ required: true })
-  nome: String;
+  nome!: String;
 
   @Prop({ default: true })
-  ativo: boolean;
+  ativo!: boolean;
 }
 
 export const CategoriaSchema = SchemaFactory.createForClass(Categoria);
